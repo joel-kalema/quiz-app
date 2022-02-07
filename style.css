@@ -1,51 +1,54 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-body{
-    background-color: rgb(238, 238, 238);
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
+body {
+  background-color: rgb(223, 223, 223);
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
-.quiz-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+.quiz-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
-.quis-container{
-    background-color: #ffff;
-    min-width: 25rem;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
+.quis-container {
+  background-color: #ffff;
+  min-width: 25rem;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
-.quiz-hearder{
-    padding: 2rem;
+.quiz-hearder {
+  padding: 2rem;
 }
-h2{
-    text-align: center;
+h2 {
+  text-align: center;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
-ul li{
-    cursor: pointer;
-    margin: 0 1rem ;
+ul li {
+  cursor: pointer;
+  margin: 0 1rem;
 }
-button{
-    width: 100%;
-    border: none;
-    background-color: blueviolet;
-    color: #ffff;
-    padding: 1.5rem;
-    cursor: pointer;
+button {
+  width: 100%;
+  border: none;
+  background-color: blueviolet;
+  color: #ffff;
+  padding: 1.5rem;
+  cursor: pointer;
 }
-button:hover{
-    background-color: rgb(114, 15, 207);
+button:hover {
+  background-color: rgb(114, 15, 207);
+}
+.end-tile {
+  padding: 10px 30px;
 }

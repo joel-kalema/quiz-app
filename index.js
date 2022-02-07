@@ -106,6 +106,7 @@ submission.addEventListener('click',() =>{
             loadQuiz();
         }else{
             quiz.innerHTML=`
+                <h1 class="end-tile">You have pleted all questions</h1>
                 <h2>You ansewered ${score}/${quizData.
                 length} questions</h2>
                 
