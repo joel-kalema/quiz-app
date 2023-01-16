@@ -5,44 +5,48 @@ const quizData=[
         b:'casavubu',
         c:'kabila',
         d:'tshitshi',
-        correct:'d'
-    },
-    {
-        question:"c'est qui le presindent actuel du Rwanda",
-        a:'Joseph',
-        b:'casavubu',
-        c:'Joel',
-        d:'Paul',
-        correct:'d'
-    },
-    {
-        question:"c'est quoi le nom du roi de la foret",
-        a:'lion',
-        b:'elephant',
-        c:'boa',
-        d:'tigre',
-        correct:'a'
-    },
-    {
-        question:"c'etait quand l'independance de la RDC",
-        a:'en 1690',
-        b:'en 1817',
-        c:'en 1960',
-        d:'en 2000',
-        correct:'c'
-    },
-    {
-        question:"c'est quoi le vrai nom Maitre Gims",
-        a:'Djuna',
-        b:'bolingi',
-        c:'dadju',
-        d:'Gazo',
-        correct:'a'
+        correct:['d', 'tshitshi']
     }
+    // {
+    //     question:"c'est qui le presindent actuel du Rwanda",
+    //     a:'Joseph',
+    //     b:'casavubu',
+    //     c:'Joel',
+    //     d:'Paul',
+    //     correct:['d', 'Paul']
+    // },
+    // {
+    //     question:"c'est quoi le nom du roi de la foret",
+    //     a:'lion',
+    //     b:'elephant',
+    //     c:'boa',
+    //     d:'tigre',
+    //     correct:['a', 'lion']
+    // },
+    // {
+    //     question:"c'etait quand l'independance de la RDC",
+    //     a:'en 1690',
+    //     b:'en 1817',
+    //     c:'en 1960',
+    //     d:'en 2000',
+    //     correct:['c','en 1960']
+    // },
+    // {
+    //     question:"c'est quoi le vrai nom Maitre Gims",
+    //     a:'Djuna',
+    //     b:'bolingi',
+    //     c:'dadju',
+    //     d:'Gazo',
+    //     correct:['a', 'Djuna']
+    // }
 ];
-const quiz=document.getElementById('quiz')
+
+const count = document.getElementById('count');
+const quiz= document.getElementById('quiz');
 const ansewerEls= document.querySelectorAll(".ansewer");
-const questions=document.getElementById('question');
+const questions= document.getElementById('question');
+const scoreDataShow = document.getElementById('score-data');
+const image = document.querySelector('.image')
 
 const a_text=document.getElementById('a_text');
 const b_text=document.getElementById('b_text');
@@ -54,6 +58,7 @@ const submission=document.getElementById('sub')
 let currentQuiz=0;
 let ansewer= undefined; 
 let score=0;
+let scoreData = [];
 
 loadQuiz();
 
@@ -96,22 +101,39 @@ submission.addEventListener('click',() =>{
     const ansewer=getSelected();
 
     if(ansewer){
-        if(ansewer === quizData[currentQuiz].correct){
+        if(ansewer === quizData[currentQuiz].correct[0]){
             score++;
         }
 
+        if(ansewer != quizData[currentQuiz].correct[0]){
+            scoreData.push(quizData[currentQuiz])
+            console.log(scoreData)
+        }
+
         currentQuiz++;
+        count.innerText = currentQuiz + '/' + quizData.length;
 
         if( currentQuiz < quizData.length){
             loadQuiz();
         }else{
-            quiz.innerHTML=`
-                <h1 class="end-tile">You have pleted all questions</h1>
-                <h2>You ansewered ${score}/${quizData.
-                length} questions</h2>
-                
-                <button onclick="location.reload()">
-                Reload</button>`;
+
+            if(score >= quizData.length/2){
+                image.innerHTML = `<img src="images/win.png" alt="#" />`
+            } else if (score < quizData.length/2) {
+                image.innerHTML = `<h1>you louse</h1>`
+            }
+        
+            quiz.innerHTML =`<div class='see-score'>
+                                <h2 class="end-tile">You have pleted all questions</h2>
+                                <h4>You ansewered ${score}/${quizData.length} questions</h4>
+                                    <div id='score-data'>
+                                        ${scoreData.map((data) => {
+                                            return `<h6>${data.question}</h5>
+                                                    <p>${data.correct[1]}</p>`
+                                        })}
+                                    </div>
+                                <button onclick="location.reload()">Reload</button>
+                            </div>`;
         }
     }
     
